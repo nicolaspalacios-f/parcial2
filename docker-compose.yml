@@ -8,6 +8,8 @@ services:
       context: ./calculo
       dockerfile: Dockerfile
     container_name: calculo
+    ports:
+      - "35001:35001"
     links:
       - db
 

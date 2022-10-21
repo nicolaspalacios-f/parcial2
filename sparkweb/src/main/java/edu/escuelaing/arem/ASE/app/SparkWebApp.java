@@ -54,7 +54,7 @@ public class SparkWebApp {
     }
 
     private static String connect(String n) throws IOException {
-        URL obj = new URL("http://" + destino() + ":5000/calculata?value=" + n);
+        URL obj = new URL("http://" + destino() + ":" + getPort() + "/calculata?value=" + n);
         System.out.println(obj);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
         con.setRequestMethod("GET");
