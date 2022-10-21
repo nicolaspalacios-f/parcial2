@@ -1,0 +1,35 @@
+version: "2"
+
+services:
+  backend1:
+    environment:
+      - PORT=35001
+    build:
+      context: ./calculo
+      dockerfile: Dockerfile
+    container_name: calculo
+    links:
+      - db
+
+  sparkwep:
+    environment:
+      - PORT=35000
+    build:
+      context: ./sparkweb
+      dockerfile: Dockerfile
+    container_name: spark
+    ports:
+      - "35000:35000"
+    links:
+      - backend1
+
+  db:
+    image: mongo:3.6.1
+    container_name: db
+    volumes:
+      - mongodb:/data/db
+      - mongodb_config:/data/configdb
+    command: mongod
+volumes:
+  mongodb:
+  mongodb_config:

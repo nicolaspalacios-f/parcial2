@@ -12,7 +12,7 @@ public class spark {
         port(getPort());
         get("/calculata", (req, res) -> {
             res.type("application/json");
-            return calcula(Integer.parseInt(req.queryParams("numero")));
+            return calcula(Integer.parseInt(req.queryParams("value")));
         });
     }
 
