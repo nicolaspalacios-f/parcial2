@@ -17,9 +17,11 @@ public class SparkWebApp {
     static Queue<String> queue = new LinkedList<String>();
 
     public static void main(String[] args) {
+        queue.add(System.getProperty("front"));
+        queue.add(System.getProperty("back"));
         port(getPort());
         get("/inputdata", (req, res) -> inputDataPage(req, res));
-        get("/results", (req, res) -> resultsPage(req, res));
+        get("/calculata", (req, res) -> resultsPage(req, res));
     }
 
     private static String inputDataPage(Request req, Response res) {
