@@ -10,20 +10,24 @@ import java.util.List;
 public class spark {
     public static void main(String[] args) {
         port(getPort());
-        get("/calculata", (req, res) -> {res.type("application/json")});
+        get("/calculata", (req, res) -> {
+            res.type("application/json");
+            return calcula(Integer.parseInt(req.queryParams("numero")));
+        });
     }
 
     static int getPort() {
         if (System.getenv("PORT") != null) {
             return Integer.parseInt(System.getenv("PORT"));
         }
-        return 4567;
+        return 5000;
     }
 
     public static String calcula(int n) {
         List<Integer> list = new ArrayList<Integer>();
-        calculate(n, list);
-        String res = "{\"operation\": \"collatzsequence\",}";
+
+        String res = "{\"operation\": \"collatzsequence\", \"input\": " + n + ", \"output\": " + calculate(n, list)
+                + "}";
         return res;
     }
 

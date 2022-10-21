@@ -9,14 +9,13 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class SparkWebApp {
 
-    /**
-     * This main method uses SparkWeb static methods and lambda functions to
-     * create a simple Hello World web app. It maps the lambda function to the
-     * /hello relative URL.
-     */
+    static Queue<String> queue = new LinkedList<String>();
+
     public static void main(String[] args) {
         port(getPort());
         get("/inputdata", (req, res) -> inputDataPage(req, res));
